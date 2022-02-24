@@ -1,0 +1,14 @@
+<launch>
+    <arg name="dataset_path" value="/home/etripys/share/RadarScenes/" />
+    <arg name="image_conversion" value="True" />
+    <arg name="seq_from" value="1" />
+    <arg name="seq_to" value="5" />
+
+    <node pkg="radarscenes2bag" type="makeBagfile.py" name="makeBagfile" output="screen">
+        <param name="dataset_path" value="$(arg dataset_path)"/>
+        <param name="image_conversion" value="$(arg image_conversion)"/>
+        <param name="seq_from" value="$(arg seq_from)"/>
+        <param name="seq_to" value="$(arg seq_to)"/>
+    </node>
+
+</launch>
