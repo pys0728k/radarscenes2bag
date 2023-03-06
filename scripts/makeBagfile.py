@@ -253,7 +253,8 @@ class dataConverter():
         vr_compensated = self.scene.radar_data['vr_compensated']
         range_sc = self.scene.radar_data['range_sc']
         azimuth_sc = self.scene.radar_data['azimuth_sc']
-        pointcld = np.array(np.transpose(np.vstack([x, y, z, rcs, vr, vr_compensated, range_sc, azimuth_sc])), dtype=np.float32)
+        label_id = self.scene.radar_data['label_id']
+        pointcld = np.array(np.transpose(np.vstack([x, y, z, rcs, vr, vr_compensated, range_sc, azimuth_sc, label_id])), dtype=np.float32)
 
         msg.fields = [
             PointField(name='x', offset=0, datatype=PointField.FLOAT32, count=1),
@@ -264,7 +265,7 @@ class dataConverter():
             PointField(name='vr_compensated', offset=20, datatype=PointField.FLOAT32, count=1),
             PointField(name='range_sc', offset=24, datatype=PointField.FLOAT32, count=1),
             PointField(name='azimuth_sc', offset=28, datatype=PointField.FLOAT32, count=1),
-            #PointField(name='sensor_id', offset=32, datatype=PointField.INT32, count=1),
+            PointField(name='label_id', offset=32, datatype=PointField.FLOAT32, count=1),
         ]
 
         msg.is_bigendian = False
